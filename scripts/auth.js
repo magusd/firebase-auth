@@ -1,5 +1,5 @@
 //grant admin cloud functions
-const adminForm = document.querySelector('.admin-actions');
+const adminForm = document.querySelector('#admin-form');
 adminForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const adminEmail = document.querySelector('#admin-email').value;
@@ -65,6 +65,8 @@ signupForm.addEventListener('submit', (e)=>{
         const modal = document.querySelector('#modal-signup');
         M.Modal.getInstance(modal).close();
         signupForm.reset();
+    }, error =>{
+        signupForm.querySelector('.error').innerHTML = error.message;
     } );
 });
 
@@ -89,5 +91,8 @@ loginForm.addEventListener('submit', (e)=>{
         const modal = document.querySelector('#modal-login');
         M.Modal.getInstance(modal).close();
         loginForm.reset();
-    });
+    },  error =>{
+        console.log(error);
+        loginForm.querySelector('.error').innerHTML = error.message;
+    } );
 });

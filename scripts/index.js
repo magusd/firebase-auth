@@ -11,6 +11,7 @@ const setupUI = (user) => {
       adminItems.forEach(item => item.style.display = 'block');
     }
 
+
     db.collection('users').doc(user.uid).get().then( doc => {
       const bio = doc.data()? doc.data().bio:'';
       const adminStatus = user.admin? 'Admin' : '';
